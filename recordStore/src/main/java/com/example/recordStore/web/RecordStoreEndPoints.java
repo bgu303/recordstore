@@ -32,5 +32,5 @@ public class RecordStoreEndPoints {
 		repository.save(record);
 		return "redirect:records";
 	}
-	}
+}
 

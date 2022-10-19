@@ -1,0 +1,8 @@
+#discogs {
+	color: blue;
+	cursor: pointer;
+}
+
+#discogs:hover {
+	text-decoration: underline;
+}
