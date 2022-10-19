@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<title>Levyt</title>
+</head>
+<body>
+	<h1>Levyt</h1>
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Artisti</th>
+		<th>Koko</th>
+		<th>Levyn nimi</th>
+		<th>Levy-yhtiö</th>
+		<th>Levyn kunto</th>
+		<th>Kannen kunto</th>
+		<th>Hinta (€)</th>
+		<th>Discogs ID</th></tr>
+	</thead>
+	<tbody>
+		<tr th:each="record : ${records}">
+			<td th:text= "${record.artist}"></td>
+			<td th:text = "${record.size}" ></td>
+			<td th:text = " ${record.title}" ></td>
+			<td th:text = " ${record.label}" ></td>
+			<td th:text = " ${record.lev}" ></td>
+			<td th:text = " ${record.kan}" ></td>
+			<td th:text = " ${record.price}" ></td>
+			<td th:text = " ${record.discogs}" ></td>
+		</tr>
+		</tbody>
+	</table>
+	<a href="/addrecord" class="btn btn-success">Lisää levy</a>
+
+</body>
+</html>
