@@ -18,12 +18,13 @@ public class Rec {
 	private String kan;
 	private double price;
 	private String discogs;
+	private String genre;
 
 	public Rec() {
 
 	}
 
-	public Rec(String artist, String size, String title, String label, String lev, String kan, double price, String discogs) {
+	public Rec(String artist, String size, String title, String label, String lev, String kan, double price, String discogs, String genre) {
 		this.artist = artist;
 		this.size = size;
 		this.title = title;
@@ -32,8 +33,8 @@ public class Rec {
 		this.kan = kan;
 		this.price = price;
 		this.discogs = discogs;
-
-	}
+		this.genre= genre;
+		}
 
 	public long getId() {
 		return id;
@@ -106,6 +107,15 @@ public class Rec {
 	public void setDiscogs(String discogs) {
 		this.discogs = discogs;
 	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	
 	
 
 }

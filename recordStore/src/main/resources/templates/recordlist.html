@@ -25,6 +25,9 @@
 		<th>Kannen kunto</th>
 		<th>Hinta (€)</th>
 		<th>Discogs ID</th>
+		<th>Genre</th>
+		<th></th>
+		<th></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -37,6 +40,10 @@
 			<td th:text="${record.kan}" ></td>
 			<td th:text="${record.price}" ></td>
 			<td th:text="${record.discogs}" th:attr="onclick=|testFunction('${record.discogs}')|" id="discogs"></td>
+			<td th:text="${record.genre}" ></td>
+			<td><a class="btn btn-success"
+					th:href="@{/update/{id}(id=${record.id})}">Muokkaa</a></td>
+			<td><a th:attr="onclick=|deleteRecord('${record.id}')|" class="btn btn-danger">Poista</a></td>
 		</tr>
 		</tbody>
 	</table>

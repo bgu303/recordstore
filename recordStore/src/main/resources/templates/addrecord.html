@@ -4,11 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
 	th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/customcss.css}"/>
 <title>Lisää levy</title>
 </head>
 <body>
-<h1>Lisää levy</h1>
-<div>
+<div class="container">
  <form th:object="${record}" th:action="@{saverecord}" action="#" method="post"> 
  <label for="artist">Artisti</label>
  <input type="text" id="artist" th:field="*{artist}" />
@@ -34,8 +34,11 @@
   <label for="discogs">Discogs ID</label>
  <input type="text" id="discogs" th:field="*{discogs}" />
  
+ <label for="genre">Genre</label>
+ <input type="text" id="genre" th:field="*{genre}" />
  
- <input class="btn btn-success" type="submit" value="Save"></input>
+ 
+ <input class="btn btn-success" type="submit" value="Tallenna"></input>
  </form>
 </div>
 <a href="/records" class="btn btn-primary">Takaisin levylistaan</a>
