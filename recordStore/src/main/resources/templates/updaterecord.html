@@ -8,40 +8,41 @@
 <title>Muokkaa levyä</title>
 </head>
 <body>
-<div class="container">
-<form th:object="${record}" th:action="@{../saverecord}" action="#" method="post">
-<input type="hidden" th:field="*{id}" class="form-control"/>
-<label for="artist">Artisti</label>
-<input type="text" th:field="*{artist}" />
+	<div class="container">
+		<form th:object="${record}" th:action="@{../saverecord}" action="#" method="post">
+			<input type="hidden" th:field="*{id}" class="form-control"/>
+			
+			<label for="artist">Artisti</label>
+			<input type="text" th:field="*{artist}" />
 
-<label for="size">Koko</label>
-<input type="text" th:field="*{size}" />
+			<label for="size">Koko</label>
+			<input type="text" th:field="*{size}" />
 
-<label for="title">Levyn nimi</label>
-<input type="text" th:field="*{title}" />
-
-<label for="label">Levy-yhtiö</label>
-<input type="text" th:field="*{label}" />
-
-<label for="lev">Levyn kunto</label>
-<input type="text" th:field="*{lev}" />
-
-<label for="kan">Kannen kunto</label>
-<input type="text" th:field="*{kan}" />
-
-<label for="price">Hinta</label>
-<input type="number" step="0.01" th:field="*{price}" />
-
-<label for="discogs">Discogs ID</label>
-<input type="text" th:field="*{discogs}" />
-
-<label for="genre">Genre</label>
-<input type="text" th:field="*{genre}" />
-
-
-<input type="submit" class="btn btn-success" value="Tallenna"></input></form>
-</div>
-<a href="/records" class="btn btn-primary">Takaisin levylistaan</a>
-
+			<label for="title">Levyn nimi</label>
+			<input type="text" th:field="*{title}" />
+			
+			<label for="label">Levy-yhtiö</label>
+			<input type="text" th:field="*{label}" />
+			
+			<label for="lev">Levyn kunto</label>
+			<input type="text" th:field="*{lev}" />
+			
+			<label for="kan">Kannen kunto</label>
+			<input type="text" th:field="*{kan}" />
+			
+			<label for="price">Hinta</label>
+			<input type="number" step="0.01" th:field="*{price}" />
+			
+			<label for="discogs">Discogs ID</label>
+			<input type="text" th:field="*{discogs}" />
+			
+			<label for="genre">Genre</label>
+			<input type="text" th:field="*{genre}" />
+			
+			<input type="submit" class="btn btn-success" value="Tallenna"></input></form>
+	</div>
+	<div id="buttonwrapper">
+		<a id="buttons" href="/records" class="btn btn-primary">Takaisin levylistaan</a>
+	</div>
 </body>
 </html>

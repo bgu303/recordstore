@@ -23,7 +23,8 @@ function deleteRecord(id) {
 $(document).ready(function() {
 	$('#recordTable').DataTable({
 		"bInfo": false,
-		"bLengthChange": false
+		"bLengthChange": false,
+		"pageLength": 25
 	});
 	$('.dataTables_length').addClass('bs-select');
 });

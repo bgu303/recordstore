@@ -11,8 +11,7 @@
 .container {
 	border-radius: 5px;
 	background-color: #f2f2f2;
-	padding: 2px 10px;
-	
+	padding: 2px 10px;	
 }
 
 input[type=text], input[type=number], input[type=submit] {
@@ -23,4 +22,21 @@ input[type=text], input[type=number], input[type=submit] {
 	border: 1px solid #ccc;
 	border-radius: 2px;
 	box-sizing: border-box;
+	
+}
+
+body {
+	font-family: "Courier New";
+}
+
+tbody {
+	font-weight: bold;
+}
+
+#price {
+	text-align: right;
+}
+
+#buttonwrapper {
+	text-align: center;
 }

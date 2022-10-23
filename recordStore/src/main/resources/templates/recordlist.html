@@ -21,9 +21,9 @@
 		<th>Koko</th>
 		<th>Levyn nimi</th>
 		<th>Levy-yhtiö</th>
-		<th>Levyn kunto</th>
-		<th>Kannen kunto</th>
-		<th>Hinta (€)</th>
+		<th>Rec</th>
+		<th>PS</th>
+		<th>Euro</th>
 		<th>Discogs ID</th>
 		<th>Genre</th>
 		<th></th>
@@ -38,7 +38,7 @@
 			<td th:text="${record.label}" ></td>
 			<td th:text="${record.lev}" ></td>
 			<td th:text="${record.kan}" ></td>
-			<td th:text="${record.price}" ></td>
+			<td id="price" th:text="${record.price}" ></td>
 			<td th:text="${record.discogs}" th:attr="onclick=|testFunction('${record.discogs}')|" id="discogs"></td>
 			<td th:text="${record.genre}" ></td>
 			<td><a class="btn btn-success"
