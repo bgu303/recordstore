@@ -31,10 +31,10 @@ public class UserEndPoints {
 	
 	@PostMapping("/createuser")
 	public String createUser(@Valid @ModelAttribute("signupform") SignUpForm signUpForm, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
+		if (!bindingResult.hasErrors()) {
 			if (signUpForm.getPassword().equals(signUpForm.getPasswordCheck())) {
 				String password = signUpForm.getPassword();
-				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
 				String hashedPassword = encoder.encode(password);
 				
 				User newUser = new User();

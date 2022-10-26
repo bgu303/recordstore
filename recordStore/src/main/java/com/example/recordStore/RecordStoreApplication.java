@@ -4,21 +4,23 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.recordStore.domain.Rec;
 import com.example.recordStore.domain.RecRepository;
+import com.example.recordStore.domain.User;
+import com.example.recordStore.domain.UserRepository;
 
 @SpringBootApplication
 public class RecordStoreApplication {
 	
-	//testing this shit
 
 	public static void main(String[] args) {
 		SpringApplication.run(RecordStoreApplication.class, args);
 	}
 	
 	@Bean
-	public CommandLineRunner demo(RecRepository repository) {
+	public CommandLineRunner demo(RecRepository repository, UserRepository urepository) {
 		return (args) -> {
 			repository.deleteAll();
 			Rec record1 = new Rec("007 / THE SCENE", "LP", "LANDSCAPES", "DETOUR", "EX", "EX", 25, "r3521240", "perus");
@@ -42,6 +44,10 @@ public class RecordStoreApplication {
             repository.save(record8);
             repository.save(record9);
             repository.save(record10);
+           
+            
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
+    
 			
 		};
 	}
