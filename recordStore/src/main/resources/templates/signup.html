@@ -15,7 +15,7 @@
 				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Virhe! Yritä uudelleen</p>	
 			</div>
 			<div>
-				<label>Sähköposti: <input type="password" th:field="*{email}" class="form-control"/></label>
+				<label>Sähköposti: <input type="text" th:field="*{email}" class="form-control"/></label>
 				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Virhe! Yritä uudelleen</p>	
 			</div>
 			<div>

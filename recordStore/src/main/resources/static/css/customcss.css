@@ -40,3 +40,11 @@ tbody {
 #buttonwrapper {
 	text-align: center;
 }
+
+.loginandregisterdiv {
+	float: right;
+}
+
+.logoutnregisterbtn {
+	width: 250px;
+}

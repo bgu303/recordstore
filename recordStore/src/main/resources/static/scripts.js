@@ -1,4 +1,4 @@
-function testFunction(discogsId) {
+function discogsFunction(discogsId) {
 	if (discogsId.startsWith("r")) {
 		discogsId = discogsId.substr(1);
 

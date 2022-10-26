@@ -62,7 +62,4 @@ public class SignUpForm {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
-	
 }
