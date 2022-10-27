@@ -27,7 +27,8 @@
 				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Salasanat eivät täsmää</p>	
 			</div>
 			
-			<input type="submit" class="btn btn-primary" value="Rekisteröidy"></input>		
+			<input type="submit" class="btn btn-primary" value="Rekisteröidy"></input>
+			<p>Löytyykö jo käyttäjä? Kirjaudu sisään <a href="/login">TÄSTÄ</a></p>	
 		</form>
 	</div>
 </div>

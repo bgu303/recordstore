@@ -42,21 +42,23 @@ public class UserEndPoints {
 				newUser.setUsername(signUpForm.getUsername());
 				newUser.setEmail(signUpForm.getEmail());
 				newUser.setRole("USER");
+				
 				if (repository.findByUsername(signUpForm.getUsername()) == null) {
 					repository.save(newUser);
 				} else {
-					bindingResult.rejectValue("username", "err.username", "Username already exists");
-					return "signup";
-				}
-			} else {
-				bindingResult.rejectValue("passwordCheck", "err.passCheck", "Passwords does not match");    	
-    			return "signup";
-			}
-			
-			} else {
-				return "signup";
-		}
-		return "redirect:/records";
-	}
-
+                    bindingResult.rejectValue("username", "err.username", "Käyttäjänimi on jo olemassa. Valitse toinen");        
+                    return "signup";                    
+                }
+            }
+            else {
+                bindingResult.rejectValue("passwordCheck", "err.passCheck", "Salasanat eivät täsmää. Yritä uudelleen.");        
+                return "signup";
+            }
+        }
+        else {
+            return "signup";
+        }
+        return "redirect:/records";        
+    }    
+    
 }

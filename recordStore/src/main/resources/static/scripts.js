@@ -16,9 +16,11 @@ function deleteRecord(id) {
 		fetch("./delete/" + id)
 			.then(() => location.reload());
 	}
-
 }
 
+function shoppingCartFunction(rec) {
+	console.log(rec);
+}
 
 $(document).ready(function() {
 	$('#recordTable').DataTable({

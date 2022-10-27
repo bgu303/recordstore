@@ -25,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/css/**", "/scripts.js").permitAll()
 			.antMatchers("/signup", "/createuser", "/records").permitAll()
 			.antMatchers("/delete/**","/saverecord","/addrecord", "/update/**").hasAuthority("ADMIN")
+			.antMatchers("/addtocart/**").hasAuthority("USER")
 			.anyRequest().authenticated()
 		.and()
 	.formLogin()

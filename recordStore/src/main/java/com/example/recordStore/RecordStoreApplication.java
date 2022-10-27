@@ -44,10 +44,8 @@ public class RecordStoreApplication {
             repository.save(record8);
             repository.save(record9);
             repository.save(record10);
-           
             
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
-    
 			
 		};
 	}

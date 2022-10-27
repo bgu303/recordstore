@@ -55,5 +55,7 @@ public class RecordStoreEndPoints {
 		model.addAttribute("record", repository.findById(id));
 		return "updaterecord";
 	}
+	
+
 }
 

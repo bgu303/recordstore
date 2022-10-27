@@ -116,6 +116,8 @@ public class Rec {
 		this.genre = genre;
 	}
 	
-	
-
+	@Override
+	public String toString() {
+		return id  + " " + artist + " " + size + " " + title + " " + label + " " + price + " " + discogs + " " + genre;
+	}
 }
