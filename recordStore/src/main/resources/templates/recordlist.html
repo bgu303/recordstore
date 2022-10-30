@@ -13,7 +13,7 @@
 <title>Levyt</title>
 </head>
 <body>
-<p>[[${#httpServletRequest.remoteUser}]]</p>
+<p>Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
 <div class="loginandregisterdiv">
 	<div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
 		<form th:action="@{/logout}" method="post" class="logoutnregisterbtn">
@@ -43,7 +43,7 @@
 		<th>Euro</th>
 		<th>Discogs ID</th>
 		<th>Genre</th>
-		<th>Ostokoriin</th>
+		<th sec:authorize="hasAuthority('USER')">Ostoskoriin</th>
 		<th sec:authorize="hasAuthority('ADMIN')"></th>
 		<th sec:authorize="hasAuthority('ADMIN')"></th>
 	</tr>
@@ -59,7 +59,7 @@
 			<td id="price" th:text="${record.price}" ></td>
 			<td th:text="${record.discogs}" th:attr="onclick=|discogsFunction('${record.discogs}')|" id="discogs"></td>
 			<td th:text="${record.genre}" ></td>
-			<td><a class="btn btn-success" th:href="@{/addtocart/{id}(id=${record.id})}">Ostoskoriin</a></td>
+			<td sec:authorize="hasAuthority('USER')"><a th:attr="onclick=|addToCart('${record.id}')|" class="btn btn-success">Ostoskoriin</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success"
 					th:href="@{/update/{id}(id=${record.id})}">Muokkaa</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:attr="onclick=|deleteRecord('${record.id}')|" class="btn btn-danger">Poista</a></td>
@@ -67,6 +67,7 @@
 		</tbody>
 	</table>
 	<a sec:authorize="hasAuthority('ADMIN')" href="/addrecord" class="btn btn-success">Lisää levy</a>
+	<a sec:authorize="hasAuthority('USER')" href="/shoppingcart" class="btn btn-success">Ostoskori</a>
 
 </body>
 </html>

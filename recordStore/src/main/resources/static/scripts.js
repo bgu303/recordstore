@@ -18,6 +18,17 @@ function deleteRecord(id) {
 	}
 }
 
+function addToCart(id) {
+	if (confirm("Lisätäänkö levy ostoskoriin?")) {
+		fetch("./addtocart/" + id)
+			.then(() => location.reload());
+
+	}
+}
+
+
+
+
 function shoppingCartFunction(rec) {
 	console.log(rec);
 }

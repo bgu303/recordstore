@@ -48,3 +48,12 @@ tbody {
 .logoutnregisterbtn {
 	width: 250px;
 }
+
+#cart {
+	text-align: center;
+}
+
+#total {
+	background-color: #999999;
+	font-size: 1.2em;
+}
