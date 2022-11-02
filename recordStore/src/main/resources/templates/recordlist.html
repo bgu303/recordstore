@@ -31,7 +31,7 @@
 		</form>
 	</div>
 </div>
-	<table id="recordTable" class="table table-striped">
+	<table id="recordTable" class="table table-striped table-bordered">
 	<thead>
 	<tr>
 		<th>Artisti</th>
@@ -51,11 +51,11 @@
 	<tbody>
 		<tr th:each="record : ${records}">
 			<td th:text="${record.artist}"></td>
-			<td th:text="${record.size}" ></td>
-			<td th:text="${record.title}" ></td>
-			<td th:text="${record.label}" ></td>
-			<td th:text="${record.lev}" ></td>
-			<td th:text="${record.kan}" ></td>
+			<td th:text="${record.size}"></td>
+			<td th:text="${record.title}"></td>
+			<td th:text="${record.label}"></td>
+			<td th:text="${record.lev}"></td>
+			<td th:text="${record.kan}"></td>
 			<td id="price" th:text="${record.price}" ></td>
 			<td th:text="${record.discogs}" th:attr="onclick=|discogsFunction('${record.discogs}')|" id="discogs"></td>
 			<td th:text="${record.genre}" ></td>

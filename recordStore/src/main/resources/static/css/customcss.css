@@ -57,3 +57,13 @@ tbody {
 	background-color: #999999;
 	font-size: 1.2em;
 }
+
+.orderdiv {
+	width: 20%;
+	margin: auto;
+	border: solid;
+	padding: 20px;
+	border-radius: 15px;
+	background: rgb(255,255,255);
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(244,244,252,1) 100%);
+}

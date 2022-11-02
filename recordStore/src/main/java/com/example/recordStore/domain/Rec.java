@@ -5,19 +5,39 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.opencsv.bean.CsvBindByPosition;
+
 @Entity
 public class Rec {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@CsvBindByPosition(position = 0)
 	private String artist;
+	
+	@CsvBindByPosition(position = 1)
 	private String size;
+	
+	@CsvBindByPosition(position = 2)
 	private String title;
+	
+	@CsvBindByPosition(position = 3)
 	private String label;
+	
+	@CsvBindByPosition(position = 4)
 	private String lev;
+	
+	@CsvBindByPosition(position = 5)
 	private String kan;
+	
+	@CsvBindByPosition(position = 6)
 	private double price;
+	
+	@CsvBindByPosition(position = 7)
 	private String discogs;
+	
+	@CsvBindByPosition(position = 8)
 	private String genre;
 
 	public Rec() {

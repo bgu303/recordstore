@@ -8,6 +8,7 @@
 	th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" th:href="@{/css/customcss.css}"/>
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"/>
+	<script type="text/javascript" th:src="@{/shoppingcartscripts.js}" /></script>
 	
 <title>Ostoskori</title>
 </head>
@@ -18,15 +19,51 @@
 	<tr>
 	<th>Levy</th>
 	<th>Hinta</th>
+	<th></th>
 	</tr>
 	</thead>
 	<tbody>
    <tr th:each="item : ${shoppingcart}">
          <td th:text="${item.artist} + ' ' + ${item.title} + ' ' + ${item.size} "></td>
          <td th:text="${item.price}"></td>
+         <td><a th:attr="onclick=|deleteFromShoppingCart('${item.id}')|" class="btn btn-danger">Poista ostoskorista</a></td>
       </tr>
       <tr id="total"><td>Yhteensä</td><td th:text="${totalprice}"></td></tr>
    </tbody>
 </table>
 <a href="/records" class="btn btn-success">Takaisin levylistaan</a>
+     <div class="orderdiv">
+		<form>
+			<div>
+				<label>Tilaajan nimi :</label>
+				<input type="text" class="orderinput"/>
+			</div>
+			<div>
+				<label>Katuosoite:</label>
+				<input type="text" class="orderinput"/>
+			</div>
+			<div>
+				<label>Postinumero:</label>
+				<input type="number" class="orderinput"/>
+			</div>
+			<div>
+				<label>Toimipaikka:</label>
+				<input type="text" class="orderinput"/>
+			</div>
+			<div>
+				<label>Sähköposti :</label>
+				<input type="text" class="orderinput"/>
+			</div>
+			<div>
+				<label>Puhelinnumero:</label>
+				<input type="number" class="orderinput"/>
+			</div>
+			<div>
+				<label>Viesti myyjälle:</label>
+				<input type="text" class="orderinput"/>
+			</div>
+			<input class="btn btn-success" type="submit" value="Lähetä tilaus"></input>
+
+		</form>
+	</div>
 </html>

@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,7 @@ public class SessionEndPoints {
 	double totalPrice = 0;
 
 	@GetMapping("/addtocart/{id}")
-	private String addToCart(@PathVariable("id") Long id, HttpServletRequest request) {
+	private String addToCart(@PathVariable("id") Long id, HttpServletRequest request, HttpServletResponse response, HttpStatus httpStatus) {
 		session = request.getSession();
 		shoppingCart = (ArrayList<Rec>) session.getAttribute("SHOPPINGSESSION");
 		boolean checker = false;
@@ -61,13 +63,37 @@ public class SessionEndPoints {
 		}
 
 		session.setAttribute("SHOPPINGSESSION", shoppingCart);
+		response.setStatus(400);
+
 		return "redirect:../records";
 	}
 
 	@GetMapping("/shoppingcart")
 	public String showShoppingCart(Model model) {
 		model.addAttribute("shoppingcart", shoppingCart);
-		model.addAttribute("totalprice", totalPrice );
+		
+		if (shoppingCart.size() == 0) {
+			return "redirect:/records";
+		}
+		
+		model.addAttribute("totalprice", totalPrice);
 		return "shoppingcart";
+	}
+	
+	@GetMapping("/deletefromshoppingcart/{id}")
+	public String deleteFromShoppingCart(@PathVariable("id") Long id, Model model) {
+		totalPrice = 0;
+
+		for (int i = 0; i < shoppingCart.size(); i++) {
+			if (shoppingCart.get(i).getId() == id) {
+				shoppingCart.remove(shoppingCart.get(i));
+			}
+		}
+		
+		for (Rec rec : shoppingCart) {
+			totalPrice += rec.getPrice();
+		}
+
+		return "redirect:/shoppingcart";
 	}
 }
