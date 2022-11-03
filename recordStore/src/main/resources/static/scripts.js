@@ -25,13 +25,15 @@ function addToCart(id) {
 			.then(response => {
 				console.log(response)
 				if (response.ok) {
+					alert("Tuote lisätty ostoskoriin!")
 					fetch("./records")
-				} else if (response.status(400)) {
-					console.log("moi");
+				} else {
+					alert("Tuote on jo ostoskorissa!");
 				}
 			})
 	}
 }
+
 
 function shoppingCartFunction(rec) {
 	console.log(rec);

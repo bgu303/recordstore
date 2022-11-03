@@ -33,34 +33,31 @@
 </table>
 <a href="/records" class="btn btn-success">Takaisin levylistaan</a>
      <div class="orderdiv">
-		<form>
+		<form th:object="${orderform}" th:action="@{/sendorder}" action="#" method="post">
 			<div>
-				<label>Tilaajan nimi :</label>
-				<input type="text" class="orderinput"/>
+				<label>Tilaajan nimi : <input type="text" th:field="*{name}" class="orderinput" required/></label>
 			</div>
 			<div>
-				<label>Katuosoite:</label>
-				<input type="text" class="orderinput"/>
+				<label>Katuosoite:<input type="text" th:field="*{streetAddress}" class="orderinput" required/></label>
+				
 			</div>
 			<div>
-				<label>Postinumero:</label>
-				<input type="number" class="orderinput"/>
+				<label>Postinumero: <input type="number" th:field="*{postCode}" class="orderinput" required/></label>
 			</div>
 			<div>
-				<label>Toimipaikka:</label>
-				<input type="text" class="orderinput"/>
+				<label>Toimipaikka: <input type="text" th:field="*{city}" class="orderinput" required/></label>
 			</div>
 			<div>
-				<label>Sähköposti :</label>
-				<input type="text" class="orderinput"/>
+				<label>Sähköposti :<input type="text" th:field="*{email}" class="orderinput" required/></label>
+				
 			</div>
 			<div>
-				<label>Puhelinnumero:</label>
-				<input type="number" class="orderinput"/>
+				<label>Puhelinnumero:<input type="number" th:field="*{phoneNumber}" class="orderinput" required/></label>
+				
 			</div>
 			<div>
-				<label>Viesti myyjälle:</label>
-				<input type="text" class="orderinput"/>
+				<label>Viesti myyjälle:<input type="text" th:field="*{message}" class="orderinput"/></label>
+				
 			</div>
 			<input class="btn btn-success" type="submit" value="Lähetä tilaus"></input>
 

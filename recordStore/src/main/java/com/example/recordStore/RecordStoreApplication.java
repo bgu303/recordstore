@@ -26,7 +26,13 @@ public class RecordStoreApplication {
 	@Bean
 	public CommandLineRunner demo(RecRepository repository, UserRepository urepository) {
 		return (args) -> {
-//			repository.deleteAll();
+			
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
+		};
+		
+	}
+}
+	//		repository.deleteAll();
 //			Rec record1 = new Rec("007 / THE SCENE", "LP", "LANDSCAPES", "DETOUR", "EX", "EX", 25, "r3521240", "perus");
 //            Rec record2 = new Rec("10cc", "LP", "ART FOR ARTS SAKE", "J&B RECORDS/MERCURY", "EX", "VG+", 4, "r636809", "alter");
 //            Rec record3 = new Rec("10cc" , "LP", "HOW DARE YOU", "MERCURY", "VG", "VG", 3, "r2236095", "sixties");
@@ -49,20 +55,20 @@ public class RecordStoreApplication {
 //            repository.save(record9);
 //            repository.save(record10);
             
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
             
-//            String fileName = "C:\\Users\\Jukka\\Desktop\\koulu\\Lukukausi3\\Server Programming\\malli-3Fixed.txt";
-//            
-//            List<Rec> recs = (List<Rec>) new CsvToBeanBuilder<Rec>(new FileReader(fileName))
-//            		.withType(Rec.class)
-//            		.build()
-//            		.parse();
-//            
-//            for (Rec rec : recs) {
-//            	repository.save(rec);
-//            }
-			
-		};
-	}
+            
+//           String fileName = "C:\\Users\\35840\\Documents\\server_programming\\malli-3Fixed.txt";
+////            
+//           List<Rec> recs = (List<Rec>) new CsvToBeanBuilder<Rec>(new FileReader(fileName))
+//           		.withType(Rec.class)
+//          		.build()
+//          		.parse();
+//           
+//           for (Rec rec : recs) {    
+//        	   repository.save(rec);
+//           }
+//            };
+//			
+//		};
 
-}
+

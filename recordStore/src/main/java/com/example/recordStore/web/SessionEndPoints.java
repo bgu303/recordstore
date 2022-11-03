@@ -12,9 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.recordStore.domain.OrderForm;
 import com.example.recordStore.domain.Rec;
 import com.example.recordStore.domain.RecRepository;
 
@@ -31,7 +34,8 @@ public class SessionEndPoints {
 	double totalPrice = 0;
 
 	@GetMapping("/addtocart/{id}")
-	private String addToCart(@PathVariable("id") Long id, HttpServletRequest request, HttpServletResponse response, HttpStatus httpStatus) {
+	@ResponseBody
+	private int addToCart(@PathVariable("id") Long id, HttpServletRequest request, HttpServletResponse response, HttpStatus httpStatus) {
 		session = request.getSession();
 		shoppingCart = (ArrayList<Rec>) session.getAttribute("SHOPPINGSESSION");
 		boolean checker = false;
@@ -50,6 +54,7 @@ public class SessionEndPoints {
 			for (int i = 0; i < shoppingList.size(); i++) {
 				if (shoppingList.get(i).getId() == id) {
 					checker = true;
+					response.setStatus(400);
 				} 
 			}
 		}
@@ -63,14 +68,14 @@ public class SessionEndPoints {
 		}
 
 		session.setAttribute("SHOPPINGSESSION", shoppingCart);
-		response.setStatus(400);
 
-		return "redirect:../records";
+		return response.getStatus();
 	}
 
 	@GetMapping("/shoppingcart")
 	public String showShoppingCart(Model model) {
 		model.addAttribute("shoppingcart", shoppingCart);
+		model.addAttribute("orderform", new OrderForm());
 		
 		if (shoppingCart.size() == 0) {
 			return "redirect:/records";
@@ -93,6 +98,17 @@ public class SessionEndPoints {
 		for (Rec rec : shoppingCart) {
 			totalPrice += rec.getPrice();
 		}
+
+		return "redirect:/shoppingcart";
+	}
+	
+	@PostMapping("/sendorder")
+	public String sendOrder(@ModelAttribute("orderform") OrderForm orderform) {
+		
+	
+		System.out.println(orderform);
+		System.out.println(shoppingCart);
+		shoppingCart.clear();
 
 		return "redirect:/shoppingcart";
 	}
