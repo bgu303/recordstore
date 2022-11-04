@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 import com.example.recordStore.web.UserDetailServiceImpl;
 
 @Configuration
@@ -23,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 			.antMatchers("/css/**", "/scripts.js").permitAll()
-			.antMatchers("/signup", "/createuser", "/records").permitAll()
+			.antMatchers("/signup", "/createuser", "/records", "/logout").permitAll()
 			.antMatchers("/delete/**","/saverecord","/addrecord", "/update/**").hasAuthority("ADMIN")
 			.antMatchers("/addtocart/**", "/sendorder").hasAuthority("USER")
 			.anyRequest().authenticated()
@@ -34,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.permitAll()
 			.and()
 	.logout()
-			.permitAll();
+			.logoutSuccessUrl("/logout")
+			.permitAll()
+			.invalidateHttpSession(true);
 	}
 	
 	@Autowired

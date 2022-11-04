@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Tilausvahvistus</title>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/customcss.css}"/>
+</head>
+<body>
+<div class="loginandregisterdiv">
+<p>Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
+<a sec:authorize="hasAuthority('USER')" href="/shoppingcart" class="btn btn-success logoutnregisterbtn">Ostoskori</a>
+	<div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
+		<form th:action="@{/logout}" method="post" class="logoutnregisterbtn">
+			<input type="submit" value="Kirjaudu ulos"/>
+		</form>
+	</div>
+	<div sec:authorize="!hasAnyAuthority('ADMIN', 'USER')">
+		<form th:action="@{/signup}" method="get" class="logoutnregisterbtn">
+			<input type="submit" value="Rekisteröidy"/>
+		</form>
+	</div>
+	<div sec:authorize="!hasAnyAuthority('ADMIN', 'USER')">
+		<form th:action="@{/login}" method="get" class="logoutnregisterbtn">
+			<input type="submit" value="Kirjaudu sisään"/>
+		</form>
+	</div>
+</div>
+	<h1>Tilausvahvistus</h1>
+	<p>Kiitos tilauksestasi. Olemme sinuun yhteydessä, kun tilauksesi on käsitelty</p>
+	<a href="/records" class="btn btn-success">Takaisin levylistaan</a>
+</body>
+</html>

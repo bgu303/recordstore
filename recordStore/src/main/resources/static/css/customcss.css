@@ -25,6 +25,33 @@ input[type=text], input[type=number], input[type=submit] {
 	
 }
 
+.addtocart {
+	color: white;
+	background-color: green;
+	padding: 8px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.addtocart:hover {
+	color:white;
+	background-color: #80ff80;
+}
+
+.shopping-cart-btn {
+	width: 100%;
+	padding: 2px 5px;
+	margin: 4px 0;
+	display: block;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	box-sizing: border-box;
+}
+
+.navleft {
+	float: left;
+}
+
 body {
 	font-family: "Courier New";
 }
@@ -42,11 +69,16 @@ tbody {
 }
 
 .loginandregisterdiv {
-	float: right;
+	width: 100%;
+	display: inline-block;
+	background: rgb(198,198,218);
+background: linear-gradient(90deg, rgba(198,198,218,1) 0%, rgba(156,156,210,1) 100%);
 }
 
 .logoutnregisterbtn {
 	width: 250px;
+	float: right;
+
 }
 
 #cart {
@@ -66,4 +98,20 @@ tbody {
 	border-radius: 15px;
 	background: rgb(255,255,255);
 	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(244,244,252,1) 100%);
+}
+
+.navleftlink {
+	color: black;
+	font-size: 1.3em;
+	text-decoration: underline;
+	
+}
+
+.navleftlink:hover {
+	color:white;
+}
+
+#welcometext {
+	text-align: center;
+	font-size: 1.3em;
 }

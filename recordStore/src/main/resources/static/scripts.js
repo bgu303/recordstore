@@ -23,7 +23,6 @@ function addToCart(id) {
 	if (confirm("Lisätäänkö levy ostoskoriin?")) {
 		fetch("./addtocart/" + id)
 			.then(response => {
-				console.log(response)
 				if (response.ok) {
 					alert("Tuote lisätty ostoskoriin!")
 					fetch("./records")

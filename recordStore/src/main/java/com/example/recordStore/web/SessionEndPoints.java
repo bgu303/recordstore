@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +31,16 @@ public class SessionEndPoints {
 
 	@Autowired
 	private RecRepository repository;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 
-	List<Rec> shoppingCart = new ArrayList<Rec>();
+	static List<Rec> shoppingCart = new ArrayList<Rec>();
+	
+	public static void clearShoppingCart() {
+		shoppingCart.clear();
+	}
+	
 	double totalPrice = 0;
 
 	@GetMapping("/addtocart/{id}")
@@ -68,6 +78,7 @@ public class SessionEndPoints {
 		}
 
 		session.setAttribute("SHOPPINGSESSION", shoppingCart);
+		System.out.println(session.getAttribute("SHOPPINGSESSION"));
 
 		return response.getStatus();
 	}
@@ -103,13 +114,41 @@ public class SessionEndPoints {
 	}
 	
 	@PostMapping("/sendorder")
-	public String sendOrder(@ModelAttribute("orderform") OrderForm orderform) {
+	public String sendOrder(@ModelAttribute("orderform") OrderForm orderform) throws InterruptedException {
 		
-	
-		System.out.println(orderform);
-		System.out.println(shoppingCart);
-		shoppingCart.clear();
-
-		return "redirect:/shoppingcart";
+		String recordString = "";
+		
+		for (int i = 0; i < shoppingCart.size(); i++) {
+			recordString += shoppingCart.get(i).getArtist() + ", " + shoppingCart.get(i).getTitle() + ", " + shoppingCart.get(i).getPrice() + ", " + shoppingCart.get(i).getDiscogs() + "\n";
+		}
+		
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo("jukkavesanto93@gmail.com");
+		message.setText(orderform.toString() + "\n \n" + recordString + "\n" + "Yhteensä: " + totalPrice + " Euroa");
+		message.setSubject("Levytilaus");
+		
+		Thread emailThread = new Thread(() -> {
+			if (!shoppingCart.isEmpty()) {
+				mailSender.send(message);
+			}
+		});
+				
+		Thread clearThread = new Thread(() -> {
+			shoppingCart.clear();
+		});
+		
+		emailThread.start();
+		clearThread.start();
+		
+		emailThread.join();
+		clearThread.join();
+		
+		return "redirect:/orderconfirmation";
 	}
+	
+	@GetMapping("/orderconfirmation")
+	public String getOrderConf() {
+		return "orderconfirmation";
+	}
+	
 }

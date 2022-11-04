@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.recordStore.domain.Rec;
 import com.example.recordStore.domain.RecRepository;
+import static com.example.recordStore.web.SessionEndPoints.clearShoppingCart;
 
 @Controller
 public class RecordStoreEndPoints {
@@ -20,6 +21,12 @@ public class RecordStoreEndPoints {
 	@GetMapping("/login")
 	public String loginEndPoint() {
 		return "login";
+	}
+	
+	@GetMapping("/logout")
+	public String logoutEndPoint() {
+		clearShoppingCart();
+		return "logout";
 	}
 	
 	//Shows the recordlist
@@ -56,6 +63,10 @@ public class RecordStoreEndPoints {
 		return "updaterecord";
 	}
 	
-
+	@GetMapping("/home") 
+	public String goHome() {
+		return "home";
+	}
+	
 }
 

@@ -13,8 +13,14 @@
 <title>Levyt</title>
 </head>
 <body>
-<p>Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
+
 <div class="loginandregisterdiv">
+<p id="welcometext">Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
+<div class="navleft">
+<a href="/home" class="navleftlink">Etusivu</a>
+<a href="/records" class="navleftlink" >Levylista</a>
+</div>
+<a sec:authorize="hasAuthority('USER')" href="/shoppingcart" class="btn btn-secondary shopping-cart-btn logoutnregisterbtn">Ostoskori</a>
 	<div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
 		<form th:action="@{/logout}" method="post" class="logoutnregisterbtn">
 			<input type="submit" value="Kirjaudu ulos"/>
@@ -59,7 +65,7 @@
 			<td id="price" th:text="${record.price}" ></td>
 			<td th:text="${record.discogs}" th:attr="onclick=|discogsFunction('${record.discogs}')|" id="discogs"></td>
 			<td th:text="${record.genre}" ></td>
-			<td sec:authorize="hasAuthority('USER')"><a th:attr="onclick=|addToCart('${record.id}')|" class="btn btn-success">Ostoskoriin</a></td>
+			<td sec:authorize="hasAuthority('USER')"><a th:attr="onclick=|addToCart('${record.id}')|" class="addtocart">Ostoskoriin</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success"
 					th:href="@{/update/{id}(id=${record.id})}">Muokkaa</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:attr="onclick=|deleteRecord('${record.id}')|" class="btn btn-danger">Poista</a></td>
@@ -67,7 +73,7 @@
 		</tbody>
 	</table>
 	<a sec:authorize="hasAuthority('ADMIN')" href="/addrecord" class="btn btn-success">Lisää levy</a>
-	<a sec:authorize="hasAuthority('USER')" href="/shoppingcart" class="btn btn-success">Ostoskori</a>
+	
 
 </body>
 </html>
