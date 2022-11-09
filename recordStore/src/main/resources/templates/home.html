@@ -10,27 +10,51 @@
 </head>
 <body>
 	<div class="loginandregisterdiv">
-		<p>Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
-		<div class="navleft">
-			<a href="/home" class="navleftlink">Etusivu</a> <a href="/records"
-				class="navleftlink">Levylista</a>
-		</div>
-		<div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
-			<form th:action="@{/logout}" method="post" class="logoutnregisterbtn">
-				<input type="submit" value="Kirjaudu ulos" />
-			</form>
-		</div>
-		<div sec:authorize="!hasAnyAuthority('ADMIN', 'USER')">
-			<form th:action="@{/signup}" method="get" class="logoutnregisterbtn">
-				<input type="submit" value="Rekisteröidy" />
-			</form>
-		</div>
-		<div sec:authorize="!hasAnyAuthority('ADMIN', 'USER')">
-			<form th:action="@{/login}" method="get" class="logoutnregisterbtn">
-				<input type="submit" value="Kirjaudu sisään" />
-			</form>
-		</div>
+<p id="welcometext">Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
+<div class="navleft">
+<a href="/home" class="navleftlink">Etusivu</a>
+<a href="/records" class="navleftlink" >Levylista</a>
+</div>
+<a sec:authorize="hasAuthority('USER')" href="/shoppingcart" class="btn btn-secondary shopping-cart-btn logoutnregisterbtn">Ostoskori</a>
+	<div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
+		<form th:action="@{/logout}" method="post" class="logoutnregisterbtn">
+			<input type="submit" value="Kirjaudu ulos"/>
+		</form>
 	</div>
-	<h1>Teretulemast</h1>
+	<div sec:authorize="!hasAnyAuthority('ADMIN', 'USER')">
+		<form th:action="@{/signup}" method="get" class="logoutnregisterbtn">
+			<input type="submit" value="Rekisteröidy"/>
+		</form>
+	</div>
+	<div sec:authorize="!hasAnyAuthority('ADMIN', 'USER')">
+		<form th:action="@{/login}" method="get" class="logoutnregisterbtn">
+			<input type="submit" value="Kirjaudu sisään"/>
+		</form>
+	</div>
+</div>
+	
+	<div class="homepage">
+	
+	<h1>Tervetuloa Mikon levykauppaan</h1>
+	<p>Alta löydät hieman ohjeistusta levyjen ostoon liittyen</p>
+	
+	<h2 class="homepagetitles">Hinnoittelu</h2>
+	
+	<p>Lähtökohtana olen käyttänyt Discogsin mediaanihintaa. Osa näistä levyistä on huomattavan hyvässä kunnossa, jolloin olen laittanut 
+	hinnan hieman ylemmäksi. Muutamassa tapauksessa jopa selvästi korkeammaksi. Mutta jokainen hintahan on ostajan harkittavissa ja koska tällä 
+	kertaa myyn pakon edessä omia levyjäni, niin <b><u>EI ALENNUKSIA !!!</u></b> eli jos olet ostamassa, niin älä laske budjettiasi alennusten varaan. 	Tämä on selkeä pelin henki (SORRY !!!) ja koskee kaikkia.</p>
+	
+	<h2 class="homepagetitles">Discogs numero</h2>
+	<p>Jokaisella levyllä tuolla Discogsissa on oma numeronsa, joka löytyy kohteen kohdalla tuolta oikeasta yläkulmasta. Aiemmin kun olen näitä levyjä 	myynyt, niin usein kysytään, että mikä painos. Nyt pystyt itse tsekkaamaan asian klikkaamalla levyn discogs numeroa levylistassa, niin pääset 	suoraan levyn discogs-sivulle. </p>
+	
+	<h2 class="homepagetitles">Levyjen kunto</h2>
+	<p>Kunnot on arvioitu pääosin vain visuaalisesti. Ensimmäinen sarake on levy (Rec), toinen kansi (PS). Jos se on tyhjä, niin ei kantta (NOPS)<br><br>
+
+	EX  =  Levy/kansi on hyvässä kunnossa. Vähäisiä käytön jälkiä voi olla levyssä tai kannessa. Osa näistä on lähempänä Mint, mutta varmuuden vuoksi 	itselläni tämä EX on se paras luokitus jota käytän.<br>
+	
+	VG  =  Kannessa enemmän kulumaa tai jälkiä. Levyssä naarmuja, jotka varmastikin kuuluvat enemmän tai vähemmän. Levy kuitenkin ehjä, eikä pitäisi 	hyppiä tai jäädä paikalleen.<br>
+	
+	PO   =  No, tämä nyt on sitten se huonoin luokitus ja tarkoittaa sitä, että naarmuja on jo huomattavasti tai kansi huonossa kunnossa. Levy on 	ehjä, ei puutu palasia tms , mutta jäljet varmastikin kuuluvat. Mutta näissäkin voi olla positiivisia yllätyksiä (??). Kannessa taasen voi olla 	repeämiä tai muutenkin huonossa hapessa. </p>
+	</div>
 </body>
 </html>

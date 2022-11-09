@@ -27,16 +27,16 @@ public class RecordStoreApplication {
 		return (args) -> {
 
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
-			repository.deleteAll();
-
-			String fileName = "malli-3Fixed-FINAL.txt";
-
-			List<Rec> recs = (List<Rec>) new CsvToBeanBuilder<Rec>(new FileReader(fileName)).withType(Rec.class).build()
-					.parse();
-
-			for (Rec rec : recs) {
-				repository.save(rec);
-			}
+//			repository.deleteAll();
+//
+//			String fileName = "malli-3Fixed-FINAL.txt";
+//
+//			List<Rec> recs = (List<Rec>) new CsvToBeanBuilder<Rec>(new FileReader(fileName)).withType(Rec.class).build()
+//					.parse();
+//
+//			for (Rec rec : recs) {
+//				repository.save(rec);
+//			}
 		};
 
 	};

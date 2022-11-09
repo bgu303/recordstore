@@ -32,7 +32,7 @@ public class Rec {
 	private String kan;
 	
 	@CsvBindByPosition(position = 6)
-	private double price;
+	private int price;
 	
 	@CsvBindByPosition(position = 7)
 	private String discogs;
@@ -44,7 +44,7 @@ public class Rec {
 
 	}
 
-	public Rec(String artist, String size, String title, String label, String lev, String kan, double price, String discogs, String genre) {
+	public Rec(String artist, String size, String title, String label, String lev, String kan, int price, String discogs, String genre) {
 		this.artist = artist;
 		this.size = size;
 		this.title = title;
@@ -112,11 +112,11 @@ public class Rec {
 		this.kan = kan;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 

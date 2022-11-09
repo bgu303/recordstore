@@ -41,7 +41,7 @@ public class SessionEndPoints {
 		shoppingCart.clear();
 	}
 	
-	double totalPrice = 0;
+	int totalPrice = 0;
 
 	@GetMapping("/addtocart/{id}")
 	@ResponseBody
@@ -119,12 +119,13 @@ public class SessionEndPoints {
 		String recordString = "";
 		
 		for (int i = 0; i < shoppingCart.size(); i++) {
-			recordString += shoppingCart.get(i).getArtist() + ", " + shoppingCart.get(i).getTitle() + ", " + shoppingCart.get(i).getPrice() + ", " + shoppingCart.get(i).getDiscogs() + "\n";
+			recordString += shoppingCart.get(i).getArtist() + "   -   " + shoppingCart.get(i).getTitle() + "   -   " + shoppingCart.get(i).getPrice() + "   -   " + shoppingCart.get(i).getDiscogs() + "\n";
 		}
 		
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo("jukkavesanto93@gmail.com");
-		message.setText(orderform.toString() + "\n \n" + recordString + "\n" + "Yhteensä: " + totalPrice + " Euroa");
+		message.setText(orderform.toString() + "\n \n" + recordString + "\n" + "Yhteismäärä: " + shoppingCart.size() + "\n" + 
+		"Yhteensä: " + totalPrice + " Euroa");
 		message.setSubject("Levytilaus");
 		
 		Thread emailThread = new Thread(() -> {

@@ -104,6 +104,7 @@ tbody {
 	color: black;
 	font-size: 1.3em;
 	text-decoration: underline;
+	text-underline-offset: 5px;
 	
 }
 
@@ -114,4 +115,19 @@ tbody {
 #welcometext {
 	text-align: center;
 	font-size: 1.3em;
+}
+
+.homepage {
+	text-align:center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.homepagetitles {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.huom {
+	text-align:center;
 }

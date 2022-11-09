@@ -63,7 +63,7 @@ public class RecordStoreEndPoints {
 		return "updaterecord";
 	}
 	
-	@GetMapping("/home") 
+	@GetMapping({"/home", "/"}) 
 	public String goHome() {
 		return "home";
 	}

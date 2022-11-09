@@ -14,8 +14,12 @@
 </head>
 <body>
 <div class="loginandregisterdiv">
-<p>Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
-<a sec:authorize="hasAuthority('USER')" href="/shoppingcart" class="btn btn-success logoutnregisterbtn">Ostoskori</a>
+<p id="welcometext">Tervetuloa [[${#httpServletRequest.remoteUser}]]!</p>
+<div class="navleft">
+<a href="/home" class="navleftlink">Etusivu</a>
+<a href="/records" class="navleftlink" >Levylista</a>
+</div>
+<a sec:authorize="hasAuthority('USER')" href="/shoppingcart" class="btn btn-secondary shopping-cart-btn logoutnregisterbtn">Ostoskori</a>
 	<div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
 		<form th:action="@{/logout}" method="post" class="logoutnregisterbtn">
 			<input type="submit" value="Kirjaudu ulos"/>
@@ -51,7 +55,8 @@
       <tr id="total"><td>Yhteensä</td><td th:text="${totalprice}"></td></tr>
    </tbody>
 </table>
-<a href="/records" class="btn btn-success">Takaisin levylistaan</a>
+<p class="huom">Huom! Tilauksen loppusummaan lisätään vielä postikulut. <br> Jos tilaus sisältää LP-levyn, postikulut ovat 8 euroa. 
+	Muussa tapauksessa postikulut ovat 4 euroa.</p>
      <div class="orderdiv">
 		<form th:object="${orderform}" th:action="@{/sendorder}" action="#" method="post">
 			<div>
