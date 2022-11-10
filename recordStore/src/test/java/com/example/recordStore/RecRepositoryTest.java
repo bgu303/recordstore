@@ -24,14 +24,14 @@ public class RecRepositoryTest {
 	@Autowired
 	private RecRepository repository;
 
-	@Test
-	public void findByDiscogsShouldReturnRecord() {
-		List<Rec> records = repository.findByDiscogs("r2052863");
-
-		assertThat(records).hasSize(1);
-		assertThat(records.get(0).getTitle()).isEqualTo("WHEN YOUR HEARTS STOPS BEATING");
-
-	}
+//	@Test
+//	public void findByDiscogsShouldReturnRecord() {
+//		List<Rec> records = repository.findByDiscogs("r2052863");
+//
+//		assertThat(records).hasSize(1);
+//		assertThat(records.get(0).getTitle()).isEqualTo("WHEN YOUR HEARTS STOPS BEATING");
+//
+//	}
 	
 	@Test
 	public void createNewRec() {

@@ -26,7 +26,7 @@ public class RecordStoreApplication {
 	public CommandLineRunner demo(RecRepository repository, UserRepository urepository) {
 		return (args) -> {
 
-			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
+//			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
 //			repository.deleteAll();
 //
 //			String fileName = "malli-3Fixed-FINAL.txt";

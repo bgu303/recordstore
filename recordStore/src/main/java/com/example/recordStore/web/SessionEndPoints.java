@@ -1,5 +1,6 @@
 package com.example.recordStore.web;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,16 +117,18 @@ public class SessionEndPoints {
 	@PostMapping("/sendorder")
 	public String sendOrder(@ModelAttribute("orderform") OrderForm orderform) throws InterruptedException {
 		
+		DecimalFormat twoDecimals = new DecimalFormat("0.00");
 		String recordString = "";
+		String totalPriceDouble = twoDecimals.format(totalPrice);
 		
 		for (int i = 0; i < shoppingCart.size(); i++) {
-			recordString += shoppingCart.get(i).getArtist() + "   -   " + shoppingCart.get(i).getTitle() + "   -   " + shoppingCart.get(i).getPrice() + "   -   " + shoppingCart.get(i).getDiscogs() + "\n";
+			recordString += shoppingCart.get(i).getArtist() + "   -   " + shoppingCart.get(i).getTitle() + "   -   " + shoppingCart.get(i).getDiscogs() + "   -   " + shoppingCart.get(i).getPrice() + "\n";
 		}
 		
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo("jukkavesanto93@gmail.com");
 		message.setText(orderform.toString() + "\n \n" + recordString + "\n" + "Yhteismäärä: " + shoppingCart.size() + "\n" + 
-		"Yhteensä: " + totalPrice + " Euroa");
+		"Yhteensä: " + totalPriceDouble + " Euroa \n+Postikulut");
 		message.setSubject("Levytilaus");
 		
 		Thread emailThread = new Thread(() -> {
