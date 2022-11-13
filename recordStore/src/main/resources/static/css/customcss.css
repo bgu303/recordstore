@@ -53,10 +53,7 @@ input[type=text], input[type=number], input[type=submit] {
 }
 
 body {
-	font-family: "Courier New";
-}
-
-tbody {
+	font-family: "Times New Roman";
 	font-weight: bold;
 }
 
@@ -105,6 +102,7 @@ tbody {
 	font-size: 1.3em;
 	text-decoration: underline;
 	text-underline-offset: 5px;
+	padding-left: 40px;
 	
 }
 
@@ -130,4 +128,8 @@ tbody {
 
 .huom {
 	text-align:center;
+}
+
+table {
+	font-family: "Courier New";
 }
