@@ -38,11 +38,34 @@ function shoppingCartFunction(rec) {
 	console.log(rec);
 }
 
+
 $(document).ready(function() {
-	$('#recordTable').DataTable({
+	// Setup - add a text input to each footer cell
+	$('#recordTable tfoot th').each(function() {
+		var title = $(this).text();
+		$(this).html('<input type="text" placeholder="Etsi ' + title + '" />');
+	});
+
+	// DataTable
+	var table = $('#recordTable').DataTable({
+		initComplete: function() {
+			this.api()
+				.columns()
+				.every(function() {
+					var that = this;
+
+					$('input', this.footer()).on('keyup change clear', function() {
+						if (that.search() !== this.value) {
+							that.search(this.value).draw();
+						}
+					});
+				});
+			$('#recordTable tfoot tr').appendTo('#recordTable thead');
+		},
 		"bInfo": false,
 		"bLengthChange": false,
 		"pageLength": 25
 	});
+
 	$('.dataTables_length').addClass('bs-select');
 });

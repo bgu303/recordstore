@@ -71,6 +71,22 @@
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:attr="onclick=|deleteRecord('${record.id}')|" class="btn btn-danger">Poista</a></td>
 		</tr>
 		</tbody>
+		<tfoot>
+            <tr>
+                <th>Artisti</th>
+                <th>Koko</th>
+                <th>Levyn nimi</th>
+                <th>Levy-yhtiö</th>
+                <th>Rec</th>
+                <th>PS</th>
+                <th>Euro</th>
+                <th>Discogs ID</th>
+                <th>Genre</th>
+                <th sec:authorize="hasAuthority('USER')" class="hidethis"></th>
+                <th sec:authorize="hasAuthority('ADMIN')" class="hidethis"></th>
+                <th sec:authorize="hasAuthority('ADMIN')" class="hidethis"></th>
+            </tr>
+        </tfoot>
 	</table>
 	<a sec:authorize="hasAuthority('ADMIN')" href="/addrecord" class="btn btn-success">Lisää levy</a>
 	
